@@ -1,0 +1,42 @@
+
+
+<p *ngFor="let name of playerName">{{name}}</p>
+
+<p>Add a game</p>
+<form (submit)="OnSubmit(form)" #form='ngForm'>
+  <input type="text" name="game" [ngModel]="game.game">
+  <input type="submit" value="Submit">
+</form>
+
+<div class="rsvp">
+  <table>
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rsvp of rsvps">
+        <td>{{rsvp.player.name}}</td>
+        <td>
+          <button [ngClass]="{'playing':rsvp.status==0}" (click)="setPlaying(rsvp)">Playing</button>
+          <button [ngClass]="{'notPlaying':rsvp.status==1}" (click)="setNotPlaying(rsvp)">Not Playing</button>
+          <button [ngClass]="{'undecided':rsvp.status==2}" (click)="setUndecided(rsvp)">Undecided</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<nav>
+  <ul>
+    <a *ngFor='let game of games' [routerLink]="['/status', 'game', game.game]"><li>
+      Game {{game.game}}
+      <ul>
+        <li><button *ngIf="game.game" (click)="createGame(game._id)">Create Game {{game.game}}</button></li>
+      </ul>
+    </li></a>
+  </ul>
+</nav>
+

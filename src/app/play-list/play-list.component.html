@@ -1,0 +1,25 @@
+<nav>
+  <ul>
+    <li><a [routerLink]="['/players', 'list']">List</a></li>
+    <li><a [routerLink]="['/players', 'addplayer']">Add Player</a></li>
+  </ul>
+</nav>
+
+<p ></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team Name</th>
+      <th>Preffered Position</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let player of players'>
+      <td>{{player.name}}</td>
+      <td>{{player.pref_position}}</td>
+      <td><button class="btn btn-warning" (click)="deletePlayer(player._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,19 @@
+<nav>
+  <ul>
+    <li><a [routerLink]="['/players', 'list']">List</a></li>
+    <li><a [routerLink]="['/players', 'addplayer']">Add Player</a></li>
+  </ul>
+</nav>
+
+<form (submit)='OnSubmit($event, form)' #form='ngForm'>
+  <div>
+    <label for="name">Player Name:</label>
+    <input type="text" name="name" required minlength="3" [(ngModel)]='player.name'>
+  </div>
+
+  <div>
+    <label for="pref_position">Preferred Position:</label>
+    <input type="text" name="pref_position" [(ngModel)]='player.pref_position'>
+  </div>
+  <button>Add Player</button>
+</form>
